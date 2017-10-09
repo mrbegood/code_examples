@@ -1,0 +1,119 @@
+$ rspec spec/requests/
+
+Run options: include {:focus=>true}
+
+All examples were filtered out; ignoring {:focus=>true}
+
+Api::V1::NotificationsController
+  GET /profile/notifications
+    should return push notification settings (current user)
+  PUT /profile/notifications
+    should change push notification settings (current user)
+
+Api::V1::ProfileController
+  GET /profile
+    should return current user profile
+  GET /profile/:id
+    should return specified with :id user profile
+  PUT /profile/:id
+    should update current user profile
+  POST /profile/:id/skip_in_search
+    should add user to search ignore list
+
+Api::V1::SessionController
+  POST /authorize
+    when facebook authorization success
+      and user status: active
+        should return user authorization data
+      and user status: blocked
+        should return error (403 Forbidden)
+    when facebook authorization failed
+      should return error (401 Unauthorized)
+  DELETE /logout
+    should change user logged_in status to false
+
+Api::V1::SettingsController
+  GET /settings
+    return should return global application settings
+
+Api::V1::SubscriptionsController
+  POST /profile/subscriptons/activate_trial
+    should grant temporary paid access to user
+
+Api::V2::NotificationsController
+  GET /api/v2/notifications
+    should return push notification settings (current user)
+  PUT /api/v2/notifications
+    should change push notification settings (current user)
+
+Api::V2::ProfileController
+  GET /api/v2/profile
+    should return current user profile
+  GET /api/v2/profile/:id
+    should return specified with :id user profile
+  PUT /api/v2/profile/:id
+    should update current user profile
+  POST /api/v2/profile/:id/skip_in_search
+    should add user to search ignore list
+
+Api::V2::SessionController
+  POST /api/v2/authorize
+    when facebook authorization success
+      and user status: active
+        should return user authorization data
+      and user status: blocked
+        should return error (403 Forbidden)
+    when facebook authorization failed
+      should return error (401 Unauthorized)
+  DELETE /api/v2/logout
+    should change user logged_in status to false
+
+Api::V2::SettingsController
+  GET /api/v2/settings
+    return should return global application settings
+
+Api::V2::SubscriptionsController
+  POST /api/v2/subscriptons/activate_trial
+    should grant temporary paid access to user
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) Api::V1::SearchController GET /search should return user profiles based on user discovery settings and filters
+     # Not yet implemented
+     # ./spec/requests/api/v1/search_controller_spec.rb:5
+
+  2) Api::V1::SubscriptionsController POST /profile/subscriptons/validate when valid itunes receipt should return subscription expiration date
+     # Not yet implemented
+     # ./spec/requests/api/v1/subscriptions_controller_spec.rb:17
+
+  3) Api::V1::SubscriptionsController POST /profile/subscriptons/validate when expired itunes receipt should return error
+     # Not yet implemented
+     # ./spec/requests/api/v1/subscriptions_controller_spec.rb:21
+
+  4) Api::V2::SubscriptionsController POST /api/v2/subscriptons/validate when valid itunes receipt should return subscription expiration date
+     # Not yet implemented
+     # ./spec/requests/api/v2/subscriptions_controller_spec.rb:17
+
+  5) Api::V2::SubscriptionsController POST /api/v2/subscriptons/validate when expired itunes receipt should return error
+     # Not yet implemented
+     # ./spec/requests/api/v2/subscriptions_controller_spec.rb:21
+
+
+Top 3 slowest examples (3.87 seconds, 27.1% of total time):
+  Api::V1::ProfileController PUT /profile/:id should update current user profile
+    1.43 seconds ./spec/requests/api/v1/profile_controller_spec.rb:39
+  Api::V1::NotificationsController GET /profile/notifications should return push notification settings (current user)
+    1.38 seconds ./spec/requests/api/v1/notifications_controller_spec.rb:5
+  Api::V2::ProfileController PUT /api/v2/profile/:id should update current user profile
+    1.06 seconds ./spec/requests/api/v2/profile_controller_spec.rb:37
+
+Top 3 slowest example groups:
+  Api::V1::NotificationsController
+    0.92086 seconds average (1.84 seconds / 2 examples) ./spec/requests/api/v1/notifications_controller_spec.rb:3
+  Api::V1::ProfileController
+    0.79304 seconds average (3.17 seconds / 4 examples) ./spec/requests/api/v1/profile_controller_spec.rb:3
+  Api::V2::ProfileController
+    0.67048 seconds average (2.68 seconds / 4 examples) ./spec/requests/api/v2/profile_controller_spec.rb:3
+
+Finished in 14.25 seconds (files took 22.81 seconds to load)
+24 examples, 0 failures, 0 pending
